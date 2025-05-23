@@ -1,0 +1,153 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+  body {
+      background-image: url('https://i.pinimg.com/originals/1a/b7/a6/1ab7a60cb83bbe749183f8b48b719243.gif');
+      /* background-size: cover; */
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ff6c5c;
+  }
+  .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Make sure video is behind the content */
+      object-fit: cover; /* Cover the entire area */
+  }
+  .container-sm {
+      position: relative; /* To position content above the video */
+      z-index: 1; /* Make sure content is above video */
+  }
+  h5 {
+      color: #F5EFFF;
+  }
+  .button-85 {
+      padding: 0.6em 2em;
+      border: none;
+      outline: none;
+      color: rgb(255, 255, 255);
+      background: #111;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      border-radius: 10px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+  }
+  .button-85:before {
+      content: "";
+      background: linear-gradient(
+          45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000
+      );
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 400%;
+      z-index: -1;
+      filter: blur(5px);
+      -webkit-filter: blur(5px);
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      animation: glowing-button-85 20s linear infinite;
+      transition: opacity 0.3s ease-in-out;
+      border-radius: 10px;
+  }
+  @keyframes glowing-button-85 {
+      0% {
+          background-position: 0 0;
+      }
+      50% {
+          background-position: 400% 0;
+      }
+      100% {
+          background-position: 0 0;
+      }
+  }
+  .button-85:after {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #222222;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+  }
+
+  /* Spinner styles */
+  .spinner {
+      display: none; /* Hidden by default */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2; /* Make sure it's above everything */
+      width: 50px;
+      height: 50px;
+      border: 8px solid #f3f3f3; /* Light grey */
+      border-top: 8px solid #3498db; /* Blue */
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+  }
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+</style>
+
+  <div class="container-sm mt-5">
+      <form method='POST' onsubmit="showLoading()">
+          <div class="mb-3 text-center">
+              <label for="aim">
+                  <h3>TOPIC TITLE</h3>
+              </label>
+              <input type="text" name="aim" class="form-control" id="aim" style="background-color: #F5EFFF;" placeholder="Type in the Name of topic you are struggling with">
+          </div>
+          <br>
+          <div class="mb-3 text-center">
+              <label for="description">
+                  <h3>PROVIDE THE SUBTOPICS</h3>
+              </label>
+              <textarea class="form-control" name="description" id="description" style="background-color: #F5EFFF;" placeholder="Provide the subtopics to your topic." rows="3"></textarea>
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="text-center">
+              <button type="submit" class="btn button-85 btn-primary" style="background-color: #A594F9;">Generate</button>
+          </div>
+      </form>
+      <div id="loading" class="spinner"></div>
+  </div>
+
+
+<script>
+  function showLoading() {
+      document.getElementById('loading').style.display = 'block';
+  }
+</script>
+{% endblock %}
+
