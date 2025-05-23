@@ -6,8 +6,8 @@ import os, shutil
 
 
 from WEBAPP import create_app
-# apikey = "AIzaSyAx-i59PwQvcID6lpx7JezKHbdjjdmhnlc"
-apikey = "AIzaSyAs1DBg7iJp4yd4861maQED4dhP3jSnBr4"
+
+apikey = "YOUR API HERE"
 genai.configure(api_key=apikey)
 
 generation_config = {
